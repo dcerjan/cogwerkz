@@ -1,0 +1,322 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://data/inventory_concept/InventorySlot.gd" type="Script" id=1]
+[ext_resource path="res://data/inventory_concept/items/IronShortSword.tres" type="Resource" id=2]
+[ext_resource path="res://ui/inventory/InventorySlot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scene/MainInventory.gd" type="Script" id=4]
+[ext_resource path="res://data/inventory_concept/items/EmptyBottleSmall.tres" type="Resource" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+tags = 255
+disabled = true
+item = ExtResource( 2 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+tags = 255
+disabled = true
+item = ExtResource( 5 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 1 )
+tags = 5
+disabled = false
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 1 )
+tags = 64
+disabled = true
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 1 )
+tags = 64
+disabled = true
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 1 )
+tags = 64
+disabled = true
+
+[node name="TestScene" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+current = true
+
+[node name="UI" type="Control" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainInventory" type="Control" parent="UI"]
+margin_right = 640.0
+margin_bottom = 360.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="Control" parent="UI/MainInventory"]
+margin_left = 48.3735
+margin_top = 32.8235
+margin_right = 88.3735
+margin_bottom = 72.8238
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Core" type="Control" parent="UI/MainInventory/Character"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Race Slot" parent="UI/MainInventory/Character/Core" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="Bloodline Slot" parent="UI/MainInventory/Character/Core" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+
+[node name="Class Slot" parent="UI/MainInventory/Character/Core" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 32.0
+
+[node name="Sub-Class Slot" parent="UI/MainInventory/Character/Core" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_top = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+
+[node name="Passive" type="Control" parent="UI/MainInventory/Character"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 168.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot 0" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="Slot 1" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+
+[node name="Slot 2" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 32.0
+
+[node name="Slot 3" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_top = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+
+[node name="Slot 4" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 128.0
+margin_top = 0.0
+margin_right = 160.0
+margin_bottom = 32.0
+
+[node name="Slot 5" parent="UI/MainInventory/Character/Passive" instance=ExtResource( 3 )]
+margin_left = 160.0
+margin_top = 0.0
+margin_right = 192.0
+margin_bottom = 32.0
+
+[node name="Active" type="Control" parent="UI/MainInventory/Character"]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 168.0
+margin_bottom = 168.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot 0" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="Slot 1" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+
+[node name="Slot 2" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 32.0
+
+[node name="Slot 3" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_top = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+
+[node name="Slot 4" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 128.0
+margin_top = 0.0
+margin_right = 160.0
+margin_bottom = 32.0
+
+[node name="Slot 5" parent="UI/MainInventory/Character/Active" instance=ExtResource( 3 )]
+margin_left = 160.0
+margin_top = 0.0
+margin_right = 192.0
+margin_bottom = 32.0
+
+[node name="Pool" type="Control" parent="UI/MainInventory/Character"]
+margin_left = 378.606
+margin_right = 418.606
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card" parent="UI/MainInventory/Character/Pool" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+inventory_slot = SubResource( 1 )
+
+[node name="Card2" parent="UI/MainInventory/Character/Pool" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 33.0
+margin_right = 32.0
+margin_bottom = 65.0
+inventory_slot = SubResource( 2 )
+
+[node name="Body" type="Control" parent="UI/MainInventory/Character"]
+margin_top = 64.0
+margin_right = 40.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TL Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="T Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+
+[node name="TR Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 32.0
+
+[node name="CL Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 64.0
+inventory_slot = SubResource( 3 )
+
+[node name="C Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="CR Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 64.0
+
+[node name="BL Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 64.0
+margin_right = 32.0
+margin_bottom = 96.0
+
+[node name="B Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 64.0
+margin_bottom = 96.0
+
+[node name="BR Slot" parent="UI/MainInventory/Character/Body" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 96.0
+
+[node name="Backpack" type="Control" parent="UI/MainInventory/Character"]
+margin_top = 195.328
+margin_right = 40.0
+margin_bottom = 235.328
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot 0" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+inventory_slot = SubResource( 4 )
+
+[node name="Slot 1" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 0.0
+margin_right = 64.0
+margin_bottom = 32.0
+inventory_slot = SubResource( 5 )
+
+[node name="Slot 2" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 32.0
+inventory_slot = SubResource( 6 )
+
+[node name="Slot 3" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 96.0
+margin_top = 0.0
+margin_right = 128.0
+margin_bottom = 32.0
+
+[node name="Slot 4" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 128.0
+margin_top = 0.0
+margin_right = 160.0
+margin_bottom = 32.0
+
+[node name="Slot 5" parent="UI/MainInventory/Character/Backpack" instance=ExtResource( 3 )]
+margin_left = 160.0
+margin_top = 0.0
+margin_right = 192.0
+margin_bottom = 32.0
