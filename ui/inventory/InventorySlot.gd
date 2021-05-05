@@ -1,7 +1,7 @@
 extends CenterContainer
 
 var default_slot_sprite = preload('res://assets/sprites/inventory_slot_background.png')
-var inventory_state = preload('res://data/inventory_concept/inventory_state.tres')
+var inventory_state = preload('res://data/character_sheet_concept/inventory_state.tres')
 
 onready var hovered_sprite_anim = $SlotBackgroundHovered/AnimationPlayer
 onready var slotted_item_sprite = $SlotBackground

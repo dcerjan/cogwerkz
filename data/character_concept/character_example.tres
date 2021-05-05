@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://data/inventory_concept/InventoryState.gd" type="Script" id=1]
+[ext_resource path="res://data/character_concept/CharacterConcept.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )

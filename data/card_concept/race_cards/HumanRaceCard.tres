@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/card_concept/RaceCardConcept.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Human Race"
+rarity = 1
+affinity = 31
+body_layout = [ 16, 8, 32, 5, 2, 5, 128, 16, 128 ]
+skill_slots = 1
+ability_slots = 1
+spell_slots = 0
+consumable_slots = 1
+health = 10
+armor = 0
+resistance = 0
+protection = 0
+shield = 0
+initiative = 10
+speed = 3
+damage = 0
+power = 0

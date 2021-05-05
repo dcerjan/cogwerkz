@@ -9,37 +9,67 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "CardConcept",
+"language": "GDScript",
+"path": "res://data/card_concept/CardConcept.gd"
+}, {
+"base": "Resource",
+"class": "CharacterConcept",
+"language": "GDScript",
+"path": "res://data/character_concept/CharacterConcept.gd"
+}, {
+"base": "CardConcept",
+"class": "ClassCardConcept",
+"language": "GDScript",
+"path": "res://data/card_concept/ClassCardConcept.gd"
+}, {
+"base": "Object",
+"class": "CommonConcept",
+"language": "GDScript",
+"path": "res://data/common_concepts/Common.gd"
+}, {
 "base": "InventoryItem",
 "class": "ConsumableInventoryItem",
 "language": "GDScript",
-"path": "res://data/inventory_concept/items/Consumable.gd"
+"path": "res://data/character_sheet_concept/items/Consumable.gd"
 }, {
 "base": "Resource",
 "class": "InventoryItem",
 "language": "GDScript",
-"path": "res://data/inventory_concept/InventoryItem.gd"
+"path": "res://data/character_sheet_concept/InventoryItem.gd"
 }, {
 "base": "Resource",
 "class": "InventorySlot",
 "language": "GDScript",
-"path": "res://data/inventory_concept/InventorySlot.gd"
+"path": "res://data/character_sheet_concept/InventorySlot.gd"
 }, {
 "base": "Resource",
 "class": "InventoryState",
 "language": "GDScript",
-"path": "res://data/inventory_concept/InventoryState.gd"
+"path": "res://data/character_sheet_concept/InventoryState.gd"
 }, {
 "base": "InventoryItem",
 "class": "OneHandedWeaponInventoryItem",
 "language": "GDScript",
-"path": "res://data/inventory_concept/items/OneHandedWeapon.gd"
+"path": "res://data/character_sheet_concept/items/OneHandedWeapon.gd"
+}, {
+"base": "CardConcept",
+"class": "RaceCardConcept",
+"language": "GDScript",
+"path": "res://data/card_concept/RaceCardConcept.gd"
 } ]
 _global_script_class_icons={
+"CardConcept": "",
+"CharacterConcept": "",
+"ClassCardConcept": "",
+"CommonConcept": "",
 "ConsumableInventoryItem": "",
 "InventoryItem": "",
 "InventorySlot": "",
 "InventoryState": "",
-"OneHandedWeaponInventoryItem": ""
+"OneHandedWeaponInventoryItem": "",
+"RaceCardConcept": ""
 }
 
 [application]
