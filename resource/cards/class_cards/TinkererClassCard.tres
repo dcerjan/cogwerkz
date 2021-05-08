@@ -1,11 +1,13 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/card_concept/ClassCardConcept.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/tinkerer_class.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name = "Tinkerer"
 rarity = 2
+icon = ExtResource( 2 )
 affinity = 0
 body_layout = [ 128, 0, 0, 129, 0, 128, 0, 0, 0 ]
 skill_slots = 0

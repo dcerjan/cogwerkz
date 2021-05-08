@@ -2,7 +2,7 @@ extends Resource
 class_name InventoryState
 
 var current_dragged_data = null
-var current_hovered_item: InventoryItem = null
+var current_hovered_card = null
 
 export(String) var name = ''
 

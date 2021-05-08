@@ -1,5 +1,5 @@
 extends Resource
-class_name InventorySlot
+class_name CardSlot
 
 enum SlotType {
 	Weapon     = 0b0000000000000001,
@@ -12,14 +12,18 @@ enum SlotType {
 	Trinket    = 0b0000000010000000,
 	Gauntlets  = 0b0000000100000000,
 	Race       = 0b0000001000000000,
-	Bloodline  = 0b0000010000000000,
-	Class      = 0b0000100000000000,
-	SubClass   = 0b0001000000000000,
+	Class      = 0b0000010000000000,
 }
 
-export(int, FLAGS, 'Weapon', 'Armor', 'Shield', 'Helmet', 'Greaves', 'Cape', 'Consumable', 'Trinket', 'Gauntlets', 'Race', 'Bloodline', 'Class', 'SubClass') var tags = 0
+export(int, FLAGS, 'Weapon', 'Armor', 'Shield', 'Helmet', 'Greaves', 'Cape', 'Consumable', 'Trinket', 'Gauntlets', 'Race', 'Class') var tags = -1
 export(bool) var disabled = true
-export(Resource) var item = null
+export(Resource) var card = null setget _set_card
 
 export(Texture) var slot_background = null
 export(Texture) var slot_decoration = null
+
+func _set_card(new_card) -> void:
+	card = new_card
+
+	if card != null:
+		slot_background = card.card.icon

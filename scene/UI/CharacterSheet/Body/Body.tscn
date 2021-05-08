@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scene/UI/CharacterSheet/Body/Body.gd" type="Script" id=1]
+[ext_resource path="res://data/character_sheet_concept/CardSlot.gd" type="Script" id=2]
+[ext_resource path="res://ui/inventory/CardSlot.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+tags = 5
+disabled = false
+
+[node name="Body" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TL Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="T Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 36.0
+margin_top = 0.0
+margin_right = 68.0
+margin_bottom = 32.0
+
+[node name="TR Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 72.0
+margin_top = 0.0
+margin_right = 104.0
+margin_bottom = 32.0
+
+[node name="CL Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 36.0
+margin_right = 32.0
+margin_bottom = 68.0
+inventory_slot = SubResource( 1 )
+
+[node name="C Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 36.0
+margin_top = 36.0
+margin_right = 68.0
+margin_bottom = 68.0
+
+[node name="CR Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 72.0
+margin_top = 36.0
+margin_right = 104.0
+margin_bottom = 68.0
+
+[node name="BL Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 72.0
+margin_right = 32.0
+margin_bottom = 104.0
+
+[node name="B Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 36.0
+margin_top = 72.0
+margin_right = 68.0
+margin_bottom = 104.0
+
+[node name="BR Slot" parent="GridContainer" instance=ExtResource( 3 )]
+margin_left = 72.0
+margin_top = 72.0
+margin_right = 104.0
+margin_bottom = 104.0

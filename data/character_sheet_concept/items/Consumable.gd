@@ -1,5 +1,5 @@
-extends InventoryItem
-class_name ConsumableInventoryItem
+extends Card
+class_name ConsumableCard
 
-func _can_slot_into(slot: InventorySlot) -> bool:
-	return slot.tags & InventorySlot.SlotType.Consumable
+func _can_slot_into(slot: CardSlot) -> bool:
+	return slot.tags & CardSlot.SlotType.Consumable

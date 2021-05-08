@@ -13,3 +13,4 @@ enum Rarity {
 	Mythic   = 0b1000
 }
 export(Rarity) var rarity = CommonConcept.Rarity.Common
+export(Texture) var icon = null

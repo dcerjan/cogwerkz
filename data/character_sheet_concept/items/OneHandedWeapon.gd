@@ -1,5 +1,5 @@
-extends InventoryItem
-class_name OneHandedWeaponInventoryItem
+extends Card
+class_name OneHandedWeaponCard
 
-func _can_slot_into(slot: InventorySlot) -> bool:
-	return slot.tags & InventorySlot.SlotType.Weapon
+func _can_slot_into(slot: CardSlot) -> bool:
+	return slot.tags & CardSlot.SlotType.Weapon
