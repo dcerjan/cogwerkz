@@ -14,11 +14,16 @@ func _set_character_sheet(sheet):
 func _on_character_sheet_changed():
 	print('Character sheet changed')
 	var character_name = ''
-	var health = ''
-	var max_health = ''
 	var race = ''
 	var clazz = ''
 	var affinity = ''
+	var health = ''
+	var max_health = ''
+	var armor = ''
+	var resistance = ''
+	var agility = ''
+	var brawn = ''
+	var brains = ''
 
 	if character_sheet != null:
 		name = character_sheet.name
@@ -27,8 +32,18 @@ func _on_character_sheet_changed():
 		health = str(character_sheet.health)
 		max_health = str(character_sheet.max_health)
 		affinity = CommonConcept.Formatter.format_affinity(character_sheet.affinity)
+		armor = str(character_sheet.armor)
+		resistance = str(character_sheet.resistance)
+		agility = str(character_sheet.agility)
+		brawn = str(character_sheet.brawn)
+		brains = str(character_sheet.brains)
 
-	$CharacterName.text = name
-	$Health.text = health + '/' + max_health
-	$RaceClass.text = race + ' - ' + clazz
-	$Affinity.text = affinity
+	$CharacterName.text = 'Name: ' + name
+	$RaceClass.text = 'Type: ' + race + ' - ' + clazz
+	$Affinity.text = 'Affinity: ' + affinity
+	$Health.text = 'HP ' + health + '/' + max_health
+	$Armor.text = 'Armor: ' + armor
+	$Resistance.text = 'Resistance: ' + resistance
+	$Agility.text = 'Agility: ' + agility
+	$Brawn.text = 'Brawn: ' + brawn
+	$Brains.text = 'Brains: ' + brains
