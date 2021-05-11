@@ -1,18 +1,16 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
 [ext_resource path="res://data/card_concept/ClassCardConcept.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/tinkerer_class.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "Tinkerer"
-rarity = 2
-icon = ExtResource( 2 )
-affinity = -1
+name = "Test Class"
+rarity = 1
+affinity = 31
 remove_equipment_tokens = [  ]
 add_equipment_tokens = [  ]
 abilities = 0
-health = 0
+health = 2
 armor = 0
 resistance = 0
 agility = 0

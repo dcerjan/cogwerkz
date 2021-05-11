@@ -14,6 +14,3 @@ enum Rarity {
 }
 export(Rarity) var rarity = CommonConcept.Rarity.Common
 export(Texture) var icon = null
-
-func _can_slot_into(tags: int) -> bool:
-	return false

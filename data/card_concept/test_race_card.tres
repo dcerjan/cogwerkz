@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/card_concept/RaceCardConcept.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Test Race"
+rarity = 1
+affinity = 31
+equipment_tokens = [  ]
+abilities = 2
+health = 5
+armor = 1
+resistance = 1
+agility = 3
+brawn = 4
+brains = 2

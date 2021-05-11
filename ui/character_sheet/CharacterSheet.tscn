@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterName" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 9.0
+margin_right = 179.0
+margin_bottom = 23.0
+
+[node name="Health" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 37.0
+margin_right = 53.0
+margin_bottom = 51.0
+
+[node name="RaceClass" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 23.0
+margin_right = 53.0
+margin_bottom = 37.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Affinity" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 51.0
+margin_right = 53.0
+margin_bottom = 65.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

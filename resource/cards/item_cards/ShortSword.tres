@@ -9,4 +9,4 @@ name = "Iron Short Sword"
 rarity = 1
 icon = ExtResource( 2 )
 affinity = 0
-tag = 1
+cost = [  ]
