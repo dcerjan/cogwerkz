@@ -16,3 +16,6 @@ func _set_class_card(card: Resource) -> void:
 		assert(card is ClassCardConcept, "ERROR: Card must be an instancce of ClassCardConcept or null")
 	class_card = card
 	emit_changed()
+
+func _init() -> void:
+	emit_changed()

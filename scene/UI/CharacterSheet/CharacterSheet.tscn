@@ -1,24 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scene/UI/CharacterSheet/Core/Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://data/character_sheet_concept/CardSlot.gd" type="Script" id=2]
-[ext_resource path="res://data/character_sheet_concept/items/HumanRace.tres" type="Resource" id=3]
+[ext_resource path="res://scene/UI/CharacterSheet/CardPool/CardPool.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resource/cards/race_cards/HumanRaceCard.tres" type="Resource" id=3]
 [ext_resource path="res://scene/UI/CharacterSheet/CharacterSheet.gd" type="Script" id=4]
-[ext_resource path="res://data/character_sheet_concept/items/TinkererClass.tres" type="Resource" id=5]
+[ext_resource path="res://resource/cards/class_cards/TinkererClassCard.tres" type="Resource" id=5]
 [ext_resource path="res://ui/inventory/CardSlot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scene/UI/CharacterSheet/Body/Body.tscn" type="PackedScene" id=7]
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 2 )
-tags = -1
-disabled = false
-card = ExtResource( 5 )
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-tags = -1
-disabled = false
-card = ExtResource( 3 )
+[ext_resource path="res://resource/cards/item_cards/ShortSword.tres" type="Resource" id=8]
 
 [node name="CharacterSheet" type="Control"]
 margin_right = 640.0
@@ -155,30 +144,9 @@ margin_left = 152.0
 margin_right = 184.0
 margin_bottom = 32.0
 
-[node name="Pool" type="Control" parent="."]
-margin_left = 426.979
-margin_top = 32.8235
-margin_right = 466.979
-margin_bottom = 72.8235
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Card" parent="Pool" instance=ExtResource( 6 )]
-margin_right = 32.0
-margin_bottom = 32.0
-disabled = false
-
-[node name="Card2" parent="Pool" instance=ExtResource( 6 )]
-margin_top = 24.0
-margin_right = 32.0
-margin_bottom = 56.0
-card_slot = SubResource( 2 )
-disabled = false
-
-[node name="Card3" parent="Pool" instance=ExtResource( 6 )]
-margin_top = 56.0
-margin_right = 32.0
-margin_bottom = 88.0
-card_slot = SubResource( 1 )
-disabled = false
+[node name="CardPool" parent="." instance=ExtResource( 2 )]
+margin_left = 406.292
+margin_top = 24.8235
+margin_right = 406.292
+margin_bottom = 24.8235
+own_cards = [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ), null ]

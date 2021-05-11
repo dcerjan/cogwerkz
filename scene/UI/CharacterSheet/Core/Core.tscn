@@ -1,18 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scene/UI/CharacterSheet/Core/Core.gd" type="Script" id=1]
 [ext_resource path="res://ui/inventory/CardSlot.tscn" type="PackedScene" id=2]
-[ext_resource path="res://data/character_sheet_concept/CardSlot.gd" type="Script" id=3]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-tags = 512
-disabled = false
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
-tags = 1024
-disabled = false
 
 [node name="Core" type="Control"]
 script = ExtResource( 1 )
@@ -25,7 +14,7 @@ margin_left = 0.0
 margin_top = 0.0
 margin_right = 32.0
 margin_bottom = 32.0
-card_slot = SubResource( 1 )
+tags = 512
 disabled = false
 
 [node name="Class Slot" parent="." instance=ExtResource( 2 )]
@@ -33,5 +22,5 @@ margin_left = 32.0
 margin_top = 0.0
 margin_right = 64.0
 margin_bottom = 32.0
-card_slot = SubResource( 2 )
+tags = 1024
 disabled = false

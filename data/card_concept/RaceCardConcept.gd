@@ -29,3 +29,6 @@ export(int) var initiative = 0
 export(int) var speed = 0
 export(int) var damage = 0
 export(int) var power = 0
+
+func _can_slot_into(tags: int) -> bool:
+	return tags & CardSlot.SlotType.Race
