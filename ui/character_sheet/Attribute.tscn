@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/character_sheet/Attribute.gd" type="Script" id=2]
+
+[node name="Attribute" type="Control"]
+margin_right = 61.0
+margin_bottom = 16.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 18.0
+margin_right = 61.0
+margin_bottom = 16.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

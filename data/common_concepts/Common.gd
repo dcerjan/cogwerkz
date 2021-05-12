@@ -61,6 +61,13 @@ enum Affinity {
 	Chaos   = 0b00001000, # Red
 	Death   = 0b00010000, # black
 }
+const AFFINITIES = [
+	Affinity.Life,
+	Affinity.Order,
+	Affinity.Balance,
+	Affinity.Chaos,
+	Affinity.Death,
+]
 
 enum Rarity {
 	Common   = 0b0001

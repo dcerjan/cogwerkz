@@ -1,3 +1,4 @@
+tool
 extends Resource
 class_name CardConcept
 
@@ -12,5 +13,13 @@ enum Rarity {
 	Rare     = 0b0100
 	Mythic   = 0b1000
 }
-export(Rarity) var rarity = CommonConcept.Rarity.Common
-export(Texture) var icon = null
+export(Rarity) var rarity = CommonConcept.Rarity.Common setget _set_rarity
+export(Texture) var icon = null setget _set_icon
+
+func _set_rarity(new_rarity) -> void:
+	rarity = new_rarity
+	emit_changed()
+
+func _set_icon(new_icon: Texture) -> void:
+	icon = new_icon
+	emit_changed()

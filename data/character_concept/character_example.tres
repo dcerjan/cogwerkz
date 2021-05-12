@@ -9,4 +9,4 @@ script = ExtResource( 1 )
 name = "Sgt. Potato Manpeeler"
 race_card = ExtResource( 2 )
 class_card = ExtResource( 3 )
-health = 3
+health = 8

@@ -39,9 +39,13 @@ func _get_name() -> String:
 func _set_race_card(new_race_card):
 	if race_card != null:
 		race_card.disconnect('changed', self, 'emit_changed')
+		if race_card.icon != null:
+			race_card.icon.disconnect('changed', self, 'emit_changed')
 	race_card = new_race_card
 	if race_card != null:
 		race_card.connect('changed', self, 'emit_changed')
+		if race_card.icon != null:
+			race_card.icon.connect('changed', self, 'emit_changed')
 	emit_changed()
 
 func _set_class_card(new_class_card):

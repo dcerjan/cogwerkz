@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/inventory_slot_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/human_race.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/mini_icons_armor.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/mini_icons_hp.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/mini_icons_brains.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/mini_icons_brawn.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/mini_icons_agility.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/mini_icons_resistance.png" type="Texture" id=10]
+[ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=16]
 
-[node name="Control" type="Control"]
+[node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -15,72 +24,262 @@ margin_left = 13.0
 margin_top = 9.0
 margin_right = 179.0
 margin_bottom = 23.0
+text = "Name: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Health" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 37.0
-margin_right = 53.0
-margin_bottom = 51.0
-
-[node name="RaceClass" type="Label" parent="."]
+[node name="RaceSlot" type="Control" parent="."]
 margin_left = 13.0
 margin_top = 23.0
-margin_right = 53.0
-margin_bottom = 37.0
+margin_right = 320.0
+margin_bottom = 55.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Affinity" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 51.0
-margin_right = 53.0
-margin_bottom = 65.0
+[node name="Label" type="Label" parent="RaceSlot"]
+margin_right = 40.0
+margin_bottom = 32.0
+text = "Race:"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Armor" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 65.0
-margin_right = 53.0
-margin_bottom = 79.0
+[node name="Background" type="TextureRect" parent="RaceSlot"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resistance" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 79.0
-margin_right = 53.0
-margin_bottom = 93.0
+[node name="SlottedCardIcon" type="TextureRect" parent="RaceSlot"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Agility" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 93.0
-margin_right = 53.0
-margin_bottom = 107.0
+[node name="SlottedCardName" type="Label" parent="RaceSlot"]
+margin_left = 76.0
+margin_right = 291.0
+margin_bottom = 32.0
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Brawn" type="Label" parent="."]
+[node name="ClassSlot" type="Control" parent="."]
 margin_left = 13.0
-margin_top = 107.0
-margin_right = 53.0
-margin_bottom = 121.0
+margin_top = 55.0
+margin_right = 320.0
+margin_bottom = 87.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Brains" type="Label" parent="."]
+[node name="Label" type="Label" parent="ClassSlot"]
+margin_right = 40.0
+margin_bottom = 32.0
+text = "Class:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="ClassSlot"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlottedCardIcon" type="TextureRect" parent="ClassSlot"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlottedCardName" type="Label" parent="ClassSlot"]
+margin_left = 76.0
+margin_right = 291.0
+margin_bottom = 32.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Affinity" type="Control" parent="."]
 margin_left = 13.0
-margin_top = 121.0
-margin_right = 53.0
+margin_top = 87.0
+margin_right = 76.0
+margin_bottom = 103.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon1" type="TextureRect" parent="Affinity"]
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon2" type="TextureRect" parent="Affinity"]
+margin_left = 16.0
+margin_right = 32.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon3" type="TextureRect" parent="Affinity"]
+margin_left = 32.0
+margin_right = 48.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon4" type="TextureRect" parent="Affinity"]
+margin_left = 48.0
+margin_right = 64.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon5" type="TextureRect" parent="Affinity"]
+margin_left = 64.0
+margin_right = 80.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Agility" parent="." instance=ExtResource( 16 )]
+margin_left = 13.0
+margin_top = 103.0
+margin_right = 49.0
+margin_bottom = 119.0
+icon = ExtResource( 9 )
+label = "0"
+description = "Amount of agility the character has.
+
+Agility score serves as a description fo how fast a character
+can run away from their responsibilites  or how fast they react.
+
+Some skills or equipment have a required agility score to be used."
+
+[node name="Brawn" parent="." instance=ExtResource( 16 )]
+margin_left = 51.0
+margin_top = 103.0
+margin_right = 87.0
+margin_bottom = 119.0
+icon = ExtResource( 8 )
+label = "0"
+description = "Amount of brawn the character has.
+
+Brawn score serves as a description of how ham a character is.
+More ham, more damage is dealt and more ham abilities and
+heavier equipment can be used.
+"
+
+[node name="Brains" parent="." instance=ExtResource( 16 )]
+margin_left = 89.0
+margin_top = 103.0
+margin_right = 125.0
+margin_bottom = 119.0
+icon = ExtResource( 7 )
+label = "0"
+description = "Amount of brains the character has.
+
+Brains score serves as a description of how big-brained a character is.
+More brains, more range and damage with majik . Even more brains
+and they might even read books!
+"
+
+[node name="Armor" parent="." instance=ExtResource( 16 )]
+margin_left = 13.0
+margin_top = 119.0
+margin_right = 49.0
 margin_bottom = 135.0
+icon = ExtResource( 4 )
+label = "0"
+description = "Amount of armor the character has.
+
+Armor lowers the incomming damage from
+all non-magical sources."
+
+[node name="Resistance" parent="." instance=ExtResource( 16 )]
+margin_left = 51.0
+margin_top = 119.0
+margin_right = 87.0
+margin_bottom = 135.0
+icon = ExtResource( 10 )
+label = "0"
+description = "Amount of magic resistance the character has.
+
+Resistance lowers the effectiveness of all
+spells targeting this character."
+
+[node name="HP" parent="." instance=ExtResource( 16 )]
+margin_left = 89.0
+margin_top = 119.0
+margin_right = 150.0
+margin_bottom = 135.0
+icon = ExtResource( 6 )
+label = "0/0"
+description = "Amount of health the character has"
+
+[node name="CardPool" type="ScrollContainer" parent="."]
+margin_left = 384.0
+margin_top = 9.0
+margin_right = 640.0
+margin_bottom = 348.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardPool"]
+margin_right = 256.0
+margin_bottom = 32.0
+
+[node name="Slot" type="Control" parent="CardPool/VBoxContainer"]
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 32 )
+
+[node name="Background" type="TextureRect" parent="CardPool/VBoxContainer/Slot"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlottedCardIcon" type="TextureRect" parent="CardPool/VBoxContainer/Slot"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlottedCardName" type="Label" parent="CardPool/VBoxContainer/Slot"]
+margin_left = 36.0
+margin_right = 251.0
+margin_bottom = 31.0
+text = "Human Race"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
