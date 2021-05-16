@@ -25,6 +25,10 @@ class Predicate:
 	static func non_zero(val: int) -> bool:
 		return val != 0
 
+class Lambda:
+	func apply():
+		return null
+
 enum SlotType {
 	None       = 0b0000000000000000,
 	Weapon     = 0b0000000000000001,

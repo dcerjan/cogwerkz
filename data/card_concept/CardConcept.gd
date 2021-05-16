@@ -23,3 +23,6 @@ func _set_rarity(new_rarity) -> void:
 func _set_icon(new_icon: Texture) -> void:
 	icon = new_icon
 	emit_changed()
+
+func can_slot_into(character, target) -> bool:
+	return false

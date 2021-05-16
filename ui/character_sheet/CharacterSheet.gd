@@ -18,10 +18,12 @@ onready var affinity_icons = [
 	$Affinity/Icon5,
 ]
 
-var ready = false
+var current_dragged_data: CardSlot.CardDropData = null
 
 func _ready() -> void:
-	ready = true
+	$RaceSlot.context = self
+	$ClassSlot.context = self
+	$CardPool.context = self
 	_on_character_sheet_changed()
 
 func _set_character_sheet(sheet):
@@ -30,16 +32,14 @@ func _set_character_sheet(sheet):
 	character_sheet = sheet
 	if character_sheet != null:
 		character_sheet.connect('changed', self, '_on_character_sheet_changed')
-	if ready:
+	if is_inside_tree():
 		_on_character_sheet_changed()
 
 func _on_character_sheet_changed():
 	print('Character sheet changed')
 	var character_name = ''
-	var race = ''
-	var race_icon = null
-	var clazz = ''
-	var class_icon = null
+	var race = null
+	var clazz = null
 	var affinity = 0
 	var health = '0'
 	var max_health = '0'
@@ -51,10 +51,8 @@ func _on_character_sheet_changed():
 
 	if character_sheet != null:
 		character_name = character_sheet.name
-		race = character_sheet.race_card.name if character_sheet.race_card != null else ''
-		race_icon = character_sheet.race_card.icon if character_sheet.race_card != null else ''
-		clazz = character_sheet.class_card.name if character_sheet.class_card != null else ''
-		class_icon = character_sheet.class_card.icon if character_sheet.class_card != null else ''
+		race = character_sheet.race_card if character_sheet.race_card != null else null
+		clazz = character_sheet.class_card if character_sheet.class_card != null else null
 		health = str(character_sheet.health)
 		max_health = str(character_sheet.max_health)
 		affinity = character_sheet.affinity
@@ -65,10 +63,9 @@ func _on_character_sheet_changed():
 		brains = str(character_sheet.brains)
 
 	$CharacterName.text = 'Name: ' + character_name
-	$RaceSlot/SlottedCardName.text = race
-	$RaceSlot/SlottedCardIcon.texture = race_icon
-	$ClassSlot/SlottedCardName.text = clazz
-	$ClassSlot/SlottedCardIcon.texture = class_icon
+
+	$RaceSlot.card = race
+	$ClassSlot.card = clazz
 	update_affinity()
 
 	$Agility.label = agility

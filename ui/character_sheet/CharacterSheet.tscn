@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/inventory_slot_background.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/human_race.png" type="Texture" id=3]
+[ext_resource path="res://ui/character_sheet/pool/CardPool.tscn" type="PackedScene" id=2]
+[ext_resource path="res://data/card_concept/test_race_card.tres" type="Resource" id=3]
 [ext_resource path="res://assets/sprites/mini_icons_armor.png" type="Texture" id=4]
+[ext_resource path="res://ui/character_sheet/slots/DetailCardSlot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sprites/mini_icons_hp.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/mini_icons_brains.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/mini_icons_brawn.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/mini_icons_agility.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/mini_icons_resistance.png" type="Texture" id=10]
+[ext_resource path="res://data/card_concept/test_class_card.tres" type="Resource" id=11]
 [ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=16]
 
 [node name="CharacterSheet" type="Control"]
@@ -29,93 +31,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RaceSlot" type="Control" parent="."]
+[node name="Race" type="Label" parent="."]
 margin_left = 13.0
 margin_top = 23.0
-margin_right = 320.0
+margin_right = 53.0
 margin_bottom = 55.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="RaceSlot"]
-margin_right = 40.0
-margin_bottom = 32.0
 text = "Race:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="RaceSlot"]
-margin_left = 40.0
-margin_right = 72.0
-margin_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="RaceSlot" parent="." instance=ExtResource( 5 )]
+margin_left = 61.0
+margin_top = 23.0
+margin_right = 103.0
+margin_bottom = 55.0
 
-[node name="SlottedCardIcon" type="TextureRect" parent="RaceSlot"]
-margin_left = 40.0
-margin_right = 72.0
-margin_bottom = 32.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SlottedCardName" type="Label" parent="RaceSlot"]
-margin_left = 76.0
-margin_right = 291.0
-margin_bottom = 32.0
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ClassSlot" type="Control" parent="."]
+[node name="Class" type="Label" parent="."]
 margin_left = 13.0
 margin_top = 55.0
-margin_right = 320.0
+margin_right = 53.0
 margin_bottom = 87.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ClassSlot"]
-margin_right = 40.0
-margin_bottom = 32.0
 text = "Class:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="ClassSlot"]
-margin_left = 40.0
-margin_right = 72.0
-margin_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SlottedCardIcon" type="TextureRect" parent="ClassSlot"]
-margin_left = 40.0
-margin_right = 72.0
-margin_bottom = 32.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SlottedCardName" type="Label" parent="ClassSlot"]
-margin_left = 76.0
-margin_right = 291.0
-margin_bottom = 32.0
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ClassSlot" parent="." instance=ExtResource( 5 )]
+margin_left = 61.0
+margin_top = 55.0
+margin_right = 103.0
+margin_bottom = 87.0
+type = 1024
 
 [node name="Affinity" type="Control" parent="."]
 margin_left = 13.0
@@ -240,46 +189,6 @@ icon = ExtResource( 6 )
 label = "0/0"
 description = "Amount of health the character has"
 
-[node name="CardPool" type="ScrollContainer" parent="."]
-margin_left = 384.0
-margin_top = 9.0
-margin_right = 640.0
-margin_bottom = 348.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CardPool"]
-margin_right = 256.0
-margin_bottom = 32.0
-
-[node name="Slot" type="Control" parent="CardPool/VBoxContainer"]
-margin_right = 256.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 256, 32 )
-
-[node name="Background" type="TextureRect" parent="CardPool/VBoxContainer/Slot"]
-margin_right = 32.0
-margin_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SlottedCardIcon" type="TextureRect" parent="CardPool/VBoxContainer/Slot"]
-margin_right = 32.0
-margin_bottom = 32.0
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SlottedCardName" type="Label" parent="CardPool/VBoxContainer/Slot"]
-margin_left = 36.0
-margin_right = 251.0
-margin_bottom = 31.0
-text = "Human Race"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CardPool" parent="." instance=ExtResource( 2 )]
+margin_left = 448.0
+card_pool = [ ExtResource( 3 ), ExtResource( 11 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]

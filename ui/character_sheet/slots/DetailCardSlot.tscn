@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/character_sheet/slots/DetailCardSlot.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/inventory_slot_background.png" type="Texture" id=4]
+
+[node name="DetailCardSlot" type="Control"]
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = 512
+background = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 32.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardName" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 22.0
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
