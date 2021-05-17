@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
 [ext_resource path="res://ui/character_sheet/pool/CardPool.tscn" type="PackedScene" id=2]
@@ -14,7 +14,9 @@
 [ext_resource path="res://assets/sprites/nine_patch.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/human_race.png" type="Texture" id=13]
 [ext_resource path="res://data/character_concept/character_example.tres" type="Resource" id=14]
+[ext_resource path="res://data/card_concept/test_item_card.tres" type="Resource" id=15]
 [ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=16]
+[ext_resource path="res://data/card_concept/test_another_item_card.tres" type="Resource" id=17]
 
 [node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
@@ -154,12 +156,12 @@ margin_top = 134.0
 margin_right = 121.0
 margin_bottom = 150.0
 icon = ExtResource( 6 )
-value = 8
+value = 3
 description = "Amount of health the character has"
 
 [node name="CardPool" parent="." instance=ExtResource( 2 )]
-margin_left = 448.0
-card_pool = [ ExtResource( 3 ), ExtResource( 11 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+margin_left = 440.0
+card_pool = [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 17 ), null, null, null, null, null, null, null, null, null, null, null, null, null ]
 
 [node name="CardPreview" type="Control" parent="."]
 margin_right = 40.0

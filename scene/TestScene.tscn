@@ -18,4 +18,3 @@ __meta__ = {
 [node name="CharacterSheet" parent="UI" instance=ExtResource( 1 )]
 anchor_right = 16.0
 anchor_bottom = 9.0
-margin_right = -432.0
