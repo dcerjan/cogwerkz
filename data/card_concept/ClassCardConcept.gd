@@ -63,4 +63,7 @@ func _set_brains(new_brains):
 
 func can_slot_into(character, slot) -> bool:
 	var has_character = character != null and character is CharacterConcept
-	return has_character && slot.type == CommonConcept.SlotType.Class
+	return (
+		.can_slot_into(character, slot) ||
+		has_character && slot.type == CommonConcept.SlotType.Class
+	)

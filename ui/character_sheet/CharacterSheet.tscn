@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
 [ext_resource path="res://ui/character_sheet/pool/CardPool.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://assets/sprites/mini_icons_agility.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/mini_icons_resistance.png" type="Texture" id=10]
 [ext_resource path="res://data/card_concept/test_class_card.tres" type="Resource" id=11]
+[ext_resource path="res://assets/sprites/nine_patch.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/human_race.png" type="Texture" id=13]
+[ext_resource path="res://data/character_concept/character_example.tres" type="Resource" id=14]
 [ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=16]
 
 [node name="CharacterSheet" type="Control"]
@@ -20,13 +23,14 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+character_sheet = ExtResource( 14 )
 
 [node name="CharacterName" type="Label" parent="."]
 margin_left = 13.0
 margin_top = 9.0
 margin_right = 179.0
 margin_bottom = 23.0
-text = "Name: "
+text = "Name: Sgt. Potato Manpeeler"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,6 +51,8 @@ margin_left = 61.0
 margin_top = 23.0
 margin_right = 103.0
 margin_bottom = 55.0
+type = 1
+card = ExtResource( 3 )
 
 [node name="Class" type="Label" parent="."]
 margin_left = 13.0
@@ -64,63 +70,25 @@ margin_left = 61.0
 margin_top = 55.0
 margin_right = 103.0
 margin_bottom = 87.0
-type = 1024
+type = 2
+card = ExtResource( 11 )
 
-[node name="Affinity" type="Control" parent="."]
+[node name="Affinity" type="HBoxContainer" parent="."]
 margin_left = 13.0
 margin_top = 87.0
-margin_right = 76.0
-margin_bottom = 103.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon1" type="TextureRect" parent="Affinity"]
-margin_right = 16.0
-margin_bottom = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon2" type="TextureRect" parent="Affinity"]
-margin_left = 16.0
-margin_right = 32.0
-margin_bottom = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon3" type="TextureRect" parent="Affinity"]
-margin_left = 32.0
-margin_right = 48.0
-margin_bottom = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon4" type="TextureRect" parent="Affinity"]
-margin_left = 48.0
-margin_right = 64.0
-margin_bottom = 16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon5" type="TextureRect" parent="Affinity"]
-margin_left = 64.0
-margin_right = 80.0
-margin_bottom = 16.0
+margin_right = 173.0
+margin_bottom = 119.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Agility" parent="." instance=ExtResource( 16 )]
 margin_left = 13.0
-margin_top = 103.0
+margin_top = 118.0
 margin_right = 49.0
-margin_bottom = 119.0
+margin_bottom = 134.0
 icon = ExtResource( 9 )
-label = "0"
+value = 3
 description = "Amount of agility the character has.
 
 Agility score serves as a description fo how fast a character
@@ -129,12 +97,12 @@ can run away from their responsibilites  or how fast they react.
 Some skills or equipment have a required agility score to be used."
 
 [node name="Brawn" parent="." instance=ExtResource( 16 )]
-margin_left = 51.0
-margin_top = 103.0
-margin_right = 87.0
-margin_bottom = 119.0
+margin_left = 49.0
+margin_top = 118.0
+margin_right = 85.0
+margin_bottom = 134.0
 icon = ExtResource( 8 )
-label = "0"
+value = 4
 description = "Amount of brawn the character has.
 
 Brawn score serves as a description of how ham a character is.
@@ -143,12 +111,12 @@ heavier equipment can be used.
 "
 
 [node name="Brains" parent="." instance=ExtResource( 16 )]
-margin_left = 89.0
-margin_top = 103.0
-margin_right = 125.0
-margin_bottom = 119.0
+margin_left = 85.0
+margin_top = 118.0
+margin_right = 121.0
+margin_bottom = 134.0
 icon = ExtResource( 7 )
-label = "0"
+value = 2
 description = "Amount of brains the character has.
 
 Brains score serves as a description of how big-brained a character is.
@@ -158,37 +126,215 @@ and they might even read books!
 
 [node name="Armor" parent="." instance=ExtResource( 16 )]
 margin_left = 13.0
-margin_top = 119.0
+margin_top = 134.0
 margin_right = 49.0
-margin_bottom = 135.0
+margin_bottom = 150.0
 icon = ExtResource( 4 )
-label = "0"
+value = 2
 description = "Amount of armor the character has.
 
 Armor lowers the incomming damage from
 all non-magical sources."
 
 [node name="Resistance" parent="." instance=ExtResource( 16 )]
-margin_left = 51.0
-margin_top = 119.0
-margin_right = 87.0
-margin_bottom = 135.0
+margin_left = 49.0
+margin_top = 134.0
+margin_right = 85.0
+margin_bottom = 150.0
 icon = ExtResource( 10 )
-label = "0"
+value = 1
 description = "Amount of magic resistance the character has.
 
 Resistance lowers the effectiveness of all
 spells targeting this character."
 
 [node name="HP" parent="." instance=ExtResource( 16 )]
-margin_left = 89.0
-margin_top = 119.0
-margin_right = 150.0
-margin_bottom = 135.0
+margin_left = 85.0
+margin_top = 134.0
+margin_right = 121.0
+margin_bottom = 150.0
 icon = ExtResource( 6 )
-label = "0/0"
+value = 8
 description = "Amount of health the character has"
 
 [node name="CardPool" parent="." instance=ExtResource( 2 )]
 margin_left = 448.0
 card_pool = [ ExtResource( 3 ), ExtResource( 11 ), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+
+[node name="CardPreview" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CardPreview"]
+margin_left = 216.0
+margin_top = 10.0
+margin_right = 424.0
+margin_bottom = 352.0
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleContainer" type="NinePatchRect" parent="CardPreview/NinePatchRect"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 205.0
+margin_bottom = 22.0
+texture = ExtResource( 12 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardName" type="Label" parent="CardPreview/NinePatchRect/TitleContainer"]
+margin_left = 8.0
+margin_right = 197.0
+margin_bottom = 17.0
+text = "card_name_placeholder"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="CardPreview/NinePatchRect"]
+margin_left = 3.0
+margin_top = 22.0
+margin_right = 205.0
+margin_bottom = 224.0
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="CardPreview/NinePatchRect/NinePatchRect2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 197.0
+margin_bottom = 197.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="CardPreview/NinePatchRect"]
+margin_left = 3.0
+margin_top = 224.0
+margin_right = 104.0
+margin_bottom = 339.0
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Agility" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 8.0
+margin_top = 8.0
+margin_bottom = 24.0
+icon = ExtResource( 9 )
+value = 1
+description = "Amount of agility the character has.
+
+Agility score serves as a description fo how fast a character
+can run away from their responsibilites  or how fast they react.
+
+Some skills or equipment have a required agility score to be used."
+modifier = true
+
+[node name="Brawn" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 8.0
+margin_top = 24.0
+margin_right = 44.0
+margin_bottom = 40.0
+icon = ExtResource( 8 )
+value = 1
+description = "Amount of brawn the character has.
+
+Brawn score serves as a description of how ham a character is.
+More ham, more damage is dealt and more ham abilities and
+heavier equipment can be used.
+"
+modifier = true
+
+[node name="Brains" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 8.0
+margin_top = 40.0
+margin_right = 44.0
+margin_bottom = 56.0
+icon = ExtResource( 7 )
+value = 1
+description = "Amount of brains the character has.
+
+Brains score serves as a description of how big-brained a character is.
+More brains, more range and damage with majik . Even more brains
+and they might even read books!
+"
+modifier = true
+
+[node name="Armor" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 52.0
+margin_top = 8.0
+margin_right = 88.0
+margin_bottom = 24.0
+icon = ExtResource( 4 )
+value = -1
+description = "Amount of armor the character has.
+
+Armor lowers the incomming damage from
+all non-magical sources."
+modifier = true
+
+[node name="Resistance" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 52.0
+margin_top = 24.0
+margin_right = 88.0
+margin_bottom = 40.0
+icon = ExtResource( 10 )
+value = 1
+description = "Amount of magic resistance the character has.
+
+Resistance lowers the effectiveness of all
+spells targeting this character."
+modifier = true
+
+[node name="HP" parent="CardPreview/NinePatchRect/NinePatchRect3" instance=ExtResource( 16 )]
+margin_left = 52.0
+margin_top = 40.0
+margin_right = 88.0
+margin_bottom = 56.0
+icon = ExtResource( 6 )
+value = 1
+description = "Amount of health the character has"
+modifier = true
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="CardPreview/NinePatchRect"]
+margin_left = 104.0
+margin_top = 224.0
+margin_right = 205.0
+margin_bottom = 339.0
+texture = ExtResource( 12 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

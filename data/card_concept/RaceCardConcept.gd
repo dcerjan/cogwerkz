@@ -55,4 +55,7 @@ func _set_brains(new_brains):
 	emit_changed()
 
 func can_slot_into(character, slot) -> bool:
-	return slot.type == CommonConcept.SlotType.Race
+	return (
+		.can_slot_into(character, slot) ||
+		slot.type == CommonConcept.SlotType.Race
+	)

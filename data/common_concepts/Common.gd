@@ -26,37 +26,32 @@ class Predicate:
 		return val != 0
 
 class Lambda:
-	func apply():
-		return null
+	func apply(params: Array):
+		pass
 
 enum SlotType {
 	None       = 0b0000000000000000,
-	Weapon     = 0b0000000000000001,
-	Armor      = 0b0000000000000010,
-	Shield     = 0b0000000000000100,
-	Helmet     = 0b0000000000001000,
-	Greaves    = 0b0000000000010000,
-	Cape       = 0b0000000000100000,
-	Consumable = 0b0000000001000000,
-	Trinket    = 0b0000000010000000,
-	Gauntlets  = 0b0000000100000000,
-	Race       = 0b0000001000000000,
-	Class      = 0b0000010000000000,
+	Race       = 0b0000000000000001,
+	Class      = 0b0000000000000010,
+	Equipment  = 0b0000000000000100,
+	Backpack   = -1,
 }
 
 enum EquipmentToken {
-	None       = 0b0000000000000000,
-	Weapon     = 0b0000000000000001,
-	Armor      = 0b0000000000000010,
-	Shield     = 0b0000000000000100,
-	Helmet     = 0b0000000000001000,
-	Greaves    = 0b0000000000010000,
-	Cape       = 0b0000000000100000,
-	Consumable = 0b0000000001000000,
-	Trinket    = 0b0000000010000000,
-	Gauntlets  = 0b0000000100000000,
+	None        = 0b0000000000000000,
+	Weapon      = 0b0000000000000001,
+	Armor       = 0b0000000000000010,
+	Shield      = 0b0000000000000100,
+	Helmet      = 0b0000000000001000,
+	Greaves     = 0b0000000000010000,
+	Cape        = 0b0000000000100000,
+	Consumable  = 0b0000000001000000,
+	Trinket     = 0b0000000010000000,
+	Gauntlets   = 0b0000000100000000,
+	Skill       = 0b0000001000000000,
+	Ability     = 0b0000010000000000,
+	Spell       = 0b0000100000000000,
 }
-
 
 enum Affinity {
 	Life    = 0b00000001, # white

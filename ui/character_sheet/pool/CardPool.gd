@@ -32,6 +32,7 @@ func refresh() -> void:
 			var num =  card_pool.size() - container.get_child_count()
 			while num > 0:
 				var child = slot_scene.instance()
+				child.type = CommonConcept.SlotType.Backpack
 				container.add_child(child)
 				num -= 1
 		var children = container.get_children()

@@ -9,6 +9,9 @@ export(Resource) var character = null setget _set_character
 
 var context = null
 
+signal drag_start(card, slot)
+signal drag_end(card, slot)
+
 class CardDropData:
 	extends Object
 	var slot: CardSlot setget ,_get_slot
@@ -48,21 +51,22 @@ func refresh() -> void:
 func get_drag_data(_position: Vector2):
 	if context == null || card == null:
 		return null
-	context.current_dragged_data = CardDropData.new(self, card)
+	var card_drop_data = CardDropData.new(self, card)
+	context.current_dragged_data = card_drop_data
 	var item_icon = TextureRect.new()
 	item_icon.texture = card.icon
 	set_drag_preview(item_icon)
 	card = null
-	context.state_changed()
+	emit_signal('drag_start', card_drop_data.card, self)
 	refresh()
 	return context.current_dragged_data
 
 func can_drop_data(_position: Vector2, data: CardDropData) -> bool:
-	if data.card.can_slot_into(character, self):
+	if data.card.can_slot_into(context.character_sheet, self):
 		var own_card = card
-		if own_card != null and !own_card._can_slot_into(character, self):
+		if own_card != null and !own_card.can_slot_into(context.character_sheet, data.slot):
 			return false
-		return data.card._can_slot_into(character, self)
+		return data.card.can_slot_into(context.character_sheet, self)
 	return false
 
 func drop_data(_position: Vector2, data: CardDropData) -> void:
@@ -70,7 +74,8 @@ func drop_data(_position: Vector2, data: CardDropData) -> void:
 	if data.card != null and data.slot != null:
 		data.slot.card = own_card
 		card = data.card
+		data.slot.emit_signal('drag_end', data.slot.card, data.slot)
 		data.slot.refresh()
 		refresh()
 		context.current_dragged_data = null
-		context.state_changed()
+	emit_signal('drag_end', card, self)
