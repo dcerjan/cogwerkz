@@ -102,9 +102,9 @@ func _on_character_sheet_changed():
 	$HP.value = max_health
 
 func update_affinity():
-	var children = $Affinity.get_children()
-	while children.size() > 0:
-		$Affinity.remove_child(children[0])
+	for child in $Affinity.get_children():
+		$Affinity.remove_child(child)
+		child.queue_free()
 
 	if character_sheet != null:
 		var character_affinity = character_sheet.affinity
