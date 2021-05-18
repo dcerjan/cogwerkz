@@ -7,8 +7,8 @@ const BLACK_BACKGROUND = preload('res://assets/sprites/ninepatch_card_border_bla
 
 const AFFINITY_NONE_BACKGROUND = preload('res://assets/sprites/card_background_no_affinity.png')
 
-func refresh() -> void:
-	.refresh()
+func _refresh() -> void:
+	._refresh()
 	if card == null:
 		self.texture = STIPPLE_BACKGROUND
 		if has_node('CardName'): $CardName.text = ''

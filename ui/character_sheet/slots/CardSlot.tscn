@@ -1,20 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://ui/character_sheet/slots/CardSlot.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/inventory_slot_background.png" type="Texture" id=3]
 
-[node name="CardSlot" type="Control"]
+[node name="CardSlot" type="NinePatchRect"]
+margin_right = 32.0
 margin_bottom = 32.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-background = ExtResource( 3 )
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 32.0
 margin_bottom = 32.0
-texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,5 +1,5 @@
 tool
-extends Control
+extends NinePatchRect
 class_name CardSlot
 
 export(CommonConcept.SlotType) var type = CommonConcept.SlotType.None
@@ -29,37 +29,51 @@ class CardDropData:
 
 func _set_character(new_character) -> void:
 	character = new_character
+	_refresh()
 
 func _set_card(new_card) -> void:
 	card = new_card
-	refresh()
+	_refresh()
 
 func _get_card() -> CardConcept:
 	return card
 
 func _set_background(new_background: Texture) -> void:
 	background = new_background
-	refresh()
+	_refresh()
 
-func refresh() -> void:
+func _refresh() -> void:
 	if has_node('Background'): get_node('Background').texture = background
 	if card == null:
 		if has_node('Icon'): get_node('Icon').texture = null
 	else:
 		if has_node('Icon'): get_node('Icon').texture = card.icon
 
-func get_drag_data(_position: Vector2):
+func _ready() -> void:
+	_refresh()
+
+func get_drag_data(position: Vector2):
 	if context == null || card == null:
 		return null
 	var card_drop_data = CardDropData.new(self, card)
 	context.current_dragged_data = card_drop_data
-	var item_icon = TextureRect.new()
-	item_icon.texture = card.icon
-	set_drag_preview(item_icon)
+	var preview = _get_drag_preview(context.current_dragged_data, context.character_sheet, position)
+	set_drag_preview(preview)
 	card = null
 	emit_signal('drag_start', card_drop_data.card, self)
-	refresh()
+	_refresh()
 	return context.current_dragged_data
+
+func _get_drag_preview(card_drop_data: CardDropData, character: CharacterConcept, position: Vector2):
+	var detail_container = Control.new()
+	var detail = load(get_script().resource_path.replace('.gd', '.tscn')).instance()
+	detail.card = card_drop_data.card
+	detail.character = character
+	detail.context = context
+	detail.rect_position = -position
+	detail.set_script(null)
+	detail_container.add_child(detail)
+	return detail_container
 
 func can_drop_data(_position: Vector2, data: CardDropData) -> bool:
 	if data.card.can_slot_into(context.character_sheet, self):
@@ -75,7 +89,7 @@ func drop_data(_position: Vector2, data: CardDropData) -> void:
 		data.slot.card = own_card
 		card = data.card
 		data.slot.emit_signal('drag_end', data.slot.card, data.slot)
-		data.slot.refresh()
-		refresh()
+		data.slot._refresh()
+		_refresh()
 		context.current_dragged_data = null
 	emit_signal('drag_end', card, self)

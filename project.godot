@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://data/card_concept/CardConcept.gd"
 }, {
-"base": "Control",
+"base": "NinePatchRect",
 "class": "CardSlot",
 "language": "GDScript",
 "path": "res://ui/character_sheet/slots/CardSlot.gd"
