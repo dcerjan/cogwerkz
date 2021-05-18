@@ -51,6 +51,7 @@ margin_bottom = 60.0
 texture = ExtResource( 6 )
 type = 1
 card = ExtResource( 3 )
+placeholder = "Insert a Race card"
 
 [node name="ClassSlot" parent="." instance=ExtResource( 5 )]
 modulate = Color( 1, 1, 1, 1 )
@@ -61,6 +62,7 @@ margin_bottom = 98.0
 texture = ExtResource( 6 )
 type = 2
 card = ExtResource( 11 )
+placeholder = "Insert a Class card"
 
 [node name="Affinity" type="Control" parent="."]
 margin_left = 8.0
@@ -76,6 +78,9 @@ modulate = Color( 1, 0.960784, 0.713726, 1 )
 self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
 texture = ExtResource( 19 )
 tint = Color( 1, 0.960784, 0.713726, 1 )
+description = "Potato's gonna potat.
+
+Tomato's gona tomat."
 
 [node name="AffinityOrder" parent="Affinity" instance=ExtResource( 12 )]
 modulate = Color( 0.470588, 0.72549, 1, 1 )
@@ -134,8 +139,7 @@ description = "Amount of brawn the character has.
 
 Brawn score serves as a description of how ham a character is.
 More ham, more damage is dealt and more ham abilities and
-heavier equipment can be used.
-"
+heavier equipment can be used."
 
 [node name="Brains" parent="." instance=ExtResource( 16 )]
 margin_left = 72.0
@@ -149,8 +153,7 @@ description = "Amount of brains the character has.
 
 Brains score serves as a description of how big-brained a character is.
 More brains, more range and damage with majik . Even more brains
-and they might even read books!
-"
+and they might even read books!"
 
 [node name="Armor" parent="." instance=ExtResource( 16 )]
 margin_left = 8.0
