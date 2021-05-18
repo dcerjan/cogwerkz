@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/ninepatch_card_border_stippled.png" type="Texture" id=1]
 [ext_resource path="res://ui/character_sheet/slots/DetailCardSlot.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/rarity.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/card_background_no_affinity.png" type="Texture" id=4]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Highlight"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 2.2974, 0.297302 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.27059, 1.27059, 1.27059, 1 ) ]
+}
+
 [node name="DetailCardSlot" type="NinePatchRect"]
+modulate = Color( 1.27059, 1.27059, 1.27059, 1 )
+self_modulate = Color( 1.27059, 1.27059, 1.27059, 1 )
 margin_right = 192.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 192, 36 )
@@ -27,6 +45,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 190.0
 margin_bottom = 34.0
+mouse_default_cursor_shape = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,3 +79,6 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Highlight = SubResource( 1 )

@@ -50,7 +50,16 @@ func _refresh() -> void:
 		if has_node('Icon'): get_node('Icon').texture = card.icon
 
 func _ready() -> void:
+	$Background.connect('mouse_entered', self, '_on_mouse_entered')
+	$Background.connect('mouse_exited', self, '_on_mouse_exited')
+	$AnimationPlayer.play_backwards('Highlight')
 	_refresh()
+
+func _on_mouse_entered() -> void:
+	$AnimationPlayer.play('Highlight')
+
+func _on_mouse_exited() -> void:
+	$AnimationPlayer.play_backwards('Highlight')
 
 func get_drag_data(position: Vector2):
 	if context == null || card == null:

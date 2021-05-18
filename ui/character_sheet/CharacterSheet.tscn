@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="RaceSlot" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 1 )
 margin_left = 8.0
 margin_top = 24.0
 margin_right = 200.0
@@ -52,6 +53,7 @@ type = 1
 card = ExtResource( 3 )
 
 [node name="ClassSlot" parent="." instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 1 )
 margin_left = 8.0
 margin_top = 62.0
 margin_right = 200.0

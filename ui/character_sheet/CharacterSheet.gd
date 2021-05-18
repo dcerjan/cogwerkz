@@ -105,9 +105,7 @@ func update_affinity():
 			var affinity = CommonConcept.AFFINITIES[index]
 			index += 1
 			if (affinity & character_affinity) != 0 && (affinity & prev_affinity) == 0:
-				print(index, ' should fade in')
 				icon.fade_in()
 			if (affinity & character_affinity) == 0 && (affinity & prev_affinity) != 0:
-				print(index, ' should fade out')
 				icon.fade_out()
 		prev_affinity = character_affinity

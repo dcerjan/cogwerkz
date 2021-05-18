@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/character_sheet/Attribute.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Highlight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2.2974, 0.297302 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1.27059, 1.27059, 1.27059, 1 ) ]
+}
 
 [node name="Attribute" type="Control"]
 margin_right = 32.0
@@ -12,17 +28,23 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color( 1.27059, 1.27059, 1.27059, 1 )
 margin_right = 24.0
 margin_bottom = 24.0
+rect_pivot_offset = Vector2( 12, 12 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Icon"]
+anims/Highlight = SubResource( 1 )
+
 [node name="Label" type="Label" parent="."]
 margin_left = 8.0
-margin_top = 8.0
+margin_top = 13.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 25.0
 text = "0"
 align = 1
 valign = 1

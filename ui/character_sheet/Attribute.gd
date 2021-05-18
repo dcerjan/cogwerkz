@@ -57,11 +57,13 @@ func hide_tooltip() -> void:
 	remove_child(tooltip)
 
 func _on_mouse_entered() -> void:
+	$Icon/AnimationPlayer.play('Highlight')
 	if description == '':
 		return
 	show_tooltip()
 
 func _on_mouse_exited() -> void:
+	$Icon/AnimationPlayer.play_backwards('Highlight')
 	hide_tooltip()
 
 func _physics_process(delta: float) -> void:
