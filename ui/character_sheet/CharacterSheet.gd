@@ -3,13 +3,8 @@ extends Control
 
 export(Resource) var character_sheet = null setget _set_character_sheet
 
-const affinity_life_scene = preload('res://ui/common/AffinityLife.tscn')
-const affinity_order_scene = preload('res://ui/common/AffinityOrder.tscn')
-const affinity_balance_scene = preload('res://ui/common/AffinityBalance.tscn')
-const affinity_chaos_scene = preload('res://ui/common/AffinityChaos.tscn')
-const affinity_death_scene = preload('res://ui/common/AffinityDeath.tscn')
-
 var current_dragged_data: CardSlot.CardDropData = null
+var prev_affinity = 0
 
 func _on_race_card_grabbed(card: RaceCardConcept, slot) -> void:
 	var sheet: CharacterConcept = character_sheet
@@ -61,7 +56,6 @@ func _set_character_sheet(sheet):
 		_on_character_sheet_changed()
 
 func _on_character_sheet_changed():
-	print('Character sheet changed')
 	var character_name = ''
 	var race = null
 	var clazz = null
@@ -102,22 +96,16 @@ func _on_character_sheet_changed():
 	$HP.value = max_health
 
 func update_affinity():
-	for child in $Affinity.get_children():
-		$Affinity.remove_child(child)
-		child.queue_free()
-
 	if character_sheet != null:
 		var character_affinity = character_sheet.affinity
-		var last_icon_index = 0
-		for a in CommonConcept.AFFINITIES:
-			if a & character_affinity:
-				var scn = null
-				match a:
-					CommonConcept.Affinity.Life: scn = affinity_life_scene
-					CommonConcept.Affinity.Order: scn = affinity_order_scene
-					CommonConcept.Affinity.Balance: scn = affinity_balance_scene
-					CommonConcept.Affinity.Chaos: scn = affinity_chaos_scene
-					CommonConcept.Affinity.Death: scn = affinity_death_scene
-					_: scn = null
-				if scn != null:
-					$Affinity.add_child(scn.instance())
+		var index = 0
+		var icons = $Affinity.get_children()
+		for icon in icons:
+			var affinity = CommonConcept.AFFINITIES[index]
+			if affinity & character_affinity:
+				if prev_affinity & character_affinity == 0:
+					icon.fade_in()
+			else:
+				if affinity & prev_affinity == 1:
+					icon.fade_out()
+		prev_affinity = character_affinity

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
 [ext_resource path="res://ui/character_sheet/pool/CardPool.tscn" type="PackedScene" id=2]
@@ -11,11 +11,17 @@
 [ext_resource path="res://assets/sprites/mini_icons_agility.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/mini_icons_resistance.png" type="Texture" id=10]
 [ext_resource path="res://data/card_concept/test_class_card.tres" type="Resource" id=11]
+[ext_resource path="res://ui/common/AffinityIcon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sprites/affinity_balance.png" type="Texture" id=13]
 [ext_resource path="res://data/character_concept/character_example.tres" type="Resource" id=14]
 [ext_resource path="res://data/card_concept/test_item_card.tres" type="Resource" id=15]
 [ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=16]
 [ext_resource path="res://data/card_concept/test_another_item_card.tres" type="Resource" id=17]
 [ext_resource path="res://assets/sprites/mini_icons_health.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/affinity_life.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/affinity_chaos.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/affinity_order.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/affinity_death.png" type="Texture" id=22]
 
 [node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
@@ -27,47 +33,80 @@ __meta__ = {
 character_sheet = ExtResource( 14 )
 
 [node name="CharacterName" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 9.0
-margin_right = 179.0
-margin_bottom = 23.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 174.0
+margin_bottom = 22.0
 text = "Name: Sgt. Potato Manpeeler"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RaceSlot" parent="." instance=ExtResource( 5 )]
-margin_left = 13.0
+margin_left = 8.0
 margin_top = 24.0
-margin_right = 55.0
-margin_bottom = 56.0
+margin_right = 200.0
+margin_bottom = 60.0
 texture = ExtResource( 6 )
 type = 1
 card = ExtResource( 3 )
 
 [node name="ClassSlot" parent="." instance=ExtResource( 5 )]
-margin_left = 13.0
+margin_left = 8.0
 margin_top = 62.0
-margin_right = 205.0
+margin_right = 200.0
 margin_bottom = 98.0
 texture = ExtResource( 6 )
 type = 2
 card = ExtResource( 11 )
 
-[node name="Affinity" type="HBoxContainer" parent="."]
-margin_left = 13.0
-margin_top = 100.0
-margin_right = 189.0
-margin_bottom = 132.0
+[node name="Affinity" type="Control" parent="."]
+margin_left = 8.0
+margin_top = 104.0
+margin_right = 192.0
+margin_bottom = 136.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AffinityLife" parent="Affinity" instance=ExtResource( 12 )]
+modulate = Color( 1, 0.960784, 0.713726, 1 )
+texture = ExtResource( 19 )
+tint = Color( 1, 0.960784, 0.713726, 1 )
+
+[node name="AffinityOrder" parent="Affinity" instance=ExtResource( 12 )]
+modulate = Color( 0.470588, 0.72549, 1, 1 )
+margin_left = 32.0
+margin_right = 64.0
+texture = ExtResource( 21 )
+tint = Color( 0.470588, 0.72549, 1, 1 )
+
+[node name="AffinityBalance" parent="Affinity" instance=ExtResource( 12 )]
+modulate = Color( 0.360784, 0.827451, 0.282353, 1 )
+margin_left = 64.0
+margin_right = 96.0
+texture = ExtResource( 13 )
+tint = Color( 0.360784, 0.827451, 0.282353, 1 )
+
+[node name="AffinityChaos" parent="Affinity" instance=ExtResource( 12 )]
+modulate = Color( 0.85098, 0.180392, 0.180392, 1 )
+margin_left = 96.0
+margin_right = 128.0
+texture = ExtResource( 20 )
+tint = Color( 0.85098, 0.180392, 0.180392, 1 )
+
+[node name="AffinityDeath" parent="Affinity" instance=ExtResource( 12 )]
+modulate = Color( 0.721569, 0.694118, 0.756863, 1 )
+margin_left = 128.0
+margin_right = 160.0
+texture = ExtResource( 22 )
+tint = Color( 0.721569, 0.694118, 0.756863, 1 )
+
 [node name="Agility" parent="." instance=ExtResource( 16 )]
-margin_left = 13.0
-margin_top = 142.0
-margin_right = 45.0
-margin_bottom = 174.0
+margin_left = 8.0
+margin_top = 144.0
+margin_right = 40.0
+margin_bottom = 176.0
 icon = ExtResource( 9 )
 tint = Color( 1, 0.921569, 0.568627, 1 )
 value = 3
@@ -79,10 +118,10 @@ can run away from their responsibilites  or how fast they react.
 Some skills or equipment have a required agility score to be used."
 
 [node name="Brawn" parent="." instance=ExtResource( 16 )]
-margin_left = 45.0
-margin_top = 142.0
-margin_right = 77.0
-margin_bottom = 174.0
+margin_left = 40.0
+margin_top = 144.0
+margin_right = 72.0
+margin_bottom = 176.0
 icon = ExtResource( 8 )
 tint = Color( 1, 0.466667, 0.466667, 1 )
 value = 4
@@ -94,10 +133,10 @@ heavier equipment can be used.
 "
 
 [node name="Brains" parent="." instance=ExtResource( 16 )]
-margin_left = 77.0
-margin_top = 142.0
-margin_right = 109.0
-margin_bottom = 174.0
+margin_left = 72.0
+margin_top = 144.0
+margin_right = 104.0
+margin_bottom = 176.0
 icon = ExtResource( 7 )
 tint = Color( 0.607843, 0.92549, 1, 1 )
 value = 2
@@ -109,10 +148,10 @@ and they might even read books!
 "
 
 [node name="Armor" parent="." instance=ExtResource( 16 )]
-margin_left = 13.0
-margin_top = 174.0
-margin_right = 45.0
-margin_bottom = 206.0
+margin_left = 8.0
+margin_top = 176.0
+margin_right = 40.0
+margin_bottom = 208.0
 icon = ExtResource( 4 )
 value = 2
 description = "Amount of armor the character has.
@@ -121,10 +160,10 @@ Armor lowers the incomming damage from
 all non-magical sources."
 
 [node name="Resistance" parent="." instance=ExtResource( 16 )]
-margin_left = 45.0
-margin_top = 174.0
-margin_right = 77.0
-margin_bottom = 206.0
+margin_left = 40.0
+margin_top = 176.0
+margin_right = 72.0
+margin_bottom = 208.0
 icon = ExtResource( 10 )
 tint = Color( 0.811765, 0.443137, 1, 1 )
 value = 1
@@ -134,10 +173,10 @@ Resistance lowers the effectiveness of all
 spells targeting this character."
 
 [node name="HP" parent="." instance=ExtResource( 16 )]
-margin_left = 77.0
-margin_top = 174.0
-margin_right = 109.0
-margin_bottom = 206.0
+margin_left = 72.0
+margin_top = 176.0
+margin_right = 104.0
+margin_bottom = 208.0
 icon = ExtResource( 18 )
 tint = Color( 1, 0, 0, 1 )
 value = 3
