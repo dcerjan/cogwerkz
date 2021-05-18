@@ -4,6 +4,7 @@ extends Control
 const TOOLTIP = preload('res://ui/character_sheet/Tooltip.tscn')
 
 export(Texture) var icon = null setget _set_icon
+export(Color) var tint = Color(0xffffffff) setget _set_tint
 export(int) var value = '' setget _set_value
 export(String, MULTILINE) var description = '' setget _set_description
 export(bool) var modifier = false setget _set_modifier
@@ -12,6 +13,10 @@ var tooltip: PanelContainer = null
 
 func _set_icon(new_icon: Texture):
 	icon = new_icon
+	refresh()
+
+func _set_tint(new_tint: Color):
+	tint = new_tint
 	refresh()
 
 func _set_value(new_value: int):
@@ -25,7 +30,9 @@ func _set_modifier(new_modifier: bool) -> void:
 	modifier = new_modifier
 
 func refresh() -> void:
-	if has_node('Icon'): $Icon.texture = icon
+	if has_node('Icon'):
+		$Icon.texture = icon
+		$Icon.modulate = tint
 	if has_node('Label'):
 		var sign_symbol = ''
 		if modifier:
