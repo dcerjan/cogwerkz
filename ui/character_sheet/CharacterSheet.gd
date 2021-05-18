@@ -51,6 +51,7 @@ func _set_character_sheet(sheet):
 		character_sheet.disconnect('changed', self, '_on_character_sheet_changed')
 	character_sheet = sheet
 	if character_sheet != null:
+		prev_affinity = ~character_sheet.affinity
 		character_sheet.connect('changed', self, '_on_character_sheet_changed')
 	if is_inside_tree():
 		_on_character_sheet_changed()
@@ -102,10 +103,11 @@ func update_affinity():
 		var icons = $Affinity.get_children()
 		for icon in icons:
 			var affinity = CommonConcept.AFFINITIES[index]
-			if affinity & character_affinity:
-				if prev_affinity & character_affinity == 0:
-					icon.fade_in()
-			else:
-				if affinity & prev_affinity == 1:
-					icon.fade_out()
+			index += 1
+			if (affinity & character_affinity) != 0 && (affinity & prev_affinity) == 0:
+				print(index, ' should fade in')
+				icon.fade_in()
+			if (affinity & character_affinity) == 0 && (affinity & prev_affinity) != 0:
+				print(index, ' should fade out')
+				icon.fade_out()
 		prev_affinity = character_affinity

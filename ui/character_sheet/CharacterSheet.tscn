@@ -71,6 +71,7 @@ __meta__ = {
 
 [node name="AffinityLife" parent="Affinity" instance=ExtResource( 12 )]
 modulate = Color( 1, 0.960784, 0.713726, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
 texture = ExtResource( 19 )
 tint = Color( 1, 0.960784, 0.713726, 1 )
 
@@ -83,6 +84,7 @@ tint = Color( 0.470588, 0.72549, 1, 1 )
 
 [node name="AffinityBalance" parent="Affinity" instance=ExtResource( 12 )]
 modulate = Color( 0.360784, 0.827451, 0.282353, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
 margin_left = 64.0
 margin_right = 96.0
 texture = ExtResource( 13 )
@@ -97,6 +99,7 @@ tint = Color( 0.85098, 0.180392, 0.180392, 1 )
 
 [node name="AffinityDeath" parent="Affinity" instance=ExtResource( 12 )]
 modulate = Color( 0.721569, 0.694118, 0.756863, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
 margin_left = 128.0
 margin_right = 160.0
 texture = ExtResource( 22 )
