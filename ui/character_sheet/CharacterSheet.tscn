@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.gd" type="Script" id=1]
 [ext_resource path="res://ui/character_sheet/pool/CardPool.tscn" type="PackedScene" id=2]
@@ -22,6 +22,12 @@
 [ext_resource path="res://assets/sprites/affinity_chaos.png" type="Texture" id=20]
 [ext_resource path="res://assets/sprites/affinity_order.png" type="Texture" id=21]
 [ext_resource path="res://assets/sprites/affinity_death.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/card_background_no_affinity.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/human_race.png" type="Texture" id=24]
+[ext_resource path="res://assets/sprites/nine_patch.png" type="Texture" id=25]
+[ext_resource path="res://assets/sprites/nine_patch_black.png" type="Texture" id=26]
+[ext_resource path="res://assets/sprites/rarity.png" type="Texture" id=27]
+[ext_resource path="res://ui/common/Tooltip.tscn" type="PackedScene" id=28]
 
 [node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
@@ -43,7 +49,6 @@ __meta__ = {
 }
 
 [node name="RaceSlot" parent="." instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 1 )
 margin_left = 8.0
 margin_top = 24.0
 margin_right = 200.0
@@ -54,7 +59,6 @@ card = ExtResource( 3 )
 placeholder = "Insert a Race card"
 
 [node name="ClassSlot" parent="." instance=ExtResource( 5 )]
-modulate = Color( 1, 1, 1, 1 )
 margin_left = 8.0
 margin_top = 62.0
 margin_right = 200.0
@@ -193,3 +197,331 @@ description = "Amount of health the character has"
 [node name="CardPool" parent="." instance=ExtResource( 2 )]
 margin_left = 448.0
 card_pool = [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 17 ) ]
+
+[node name="CardPreview" type="NinePatchRect" parent="."]
+margin_left = 232.0
+margin_top = 10.0
+margin_right = 424.0
+margin_bottom = 280.0
+texture = ExtResource( 6 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Background" type="NinePatchRect" parent="CardPreview"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 190.0
+margin_bottom = 268.0
+texture = ExtResource( 23 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardNameContainer" type="NinePatchRect" parent="CardPreview"]
+margin_left = 34.0
+margin_top = 7.0
+margin_right = 185.0
+margin_bottom = 39.0
+texture = ExtResource( 26 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="CardPreview/CardNameContainer"]
+margin_left = 4.0
+margin_top = 1.0
+margin_right = 150.0
+margin_bottom = 31.0
+texture = ExtResource( 25 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="CardPreview/CardNameContainer"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 145.0
+margin_bottom = 23.0
+text = "placeholder_card_name"
+
+[node name="Requirements" type="NinePatchRect" parent="CardPreview"]
+margin_left = 7.0
+margin_top = 94.0
+margin_right = 185.0
+margin_bottom = 263.0
+texture = ExtResource( 6 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="CardPreview/Requirements"]
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 177.0
+margin_bottom = 168.0
+texture = ExtResource( 25 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Agility" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 42.0
+margin_top = 20.0
+margin_right = 74.0
+margin_bottom = 52.0
+icon = ExtResource( 9 )
+tint = Color( 1, 0.921569, 0.568627, 1 )
+value = 3
+description = "Amount of agility the character has.
+
+Agility score serves as a description fo how fast a character
+can run away from their responsibilites  or how fast they react.
+
+Some skills or equipment have a required agility score to be used."
+modifier = true
+
+[node name="Brawn" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 74.0
+margin_top = 20.0
+margin_right = 106.0
+margin_bottom = 52.0
+icon = ExtResource( 8 )
+tint = Color( 1, 0.466667, 0.466667, 1 )
+value = 4
+description = "Amount of brawn the character has.
+
+Brawn score serves as a description of how ham a character is.
+More ham, more damage is dealt and more ham abilities and
+heavier equipment can be used."
+modifier = true
+
+[node name="Brains" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 106.0
+margin_top = 20.0
+margin_right = 138.0
+margin_bottom = 52.0
+icon = ExtResource( 7 )
+tint = Color( 0.607843, 0.92549, 1, 1 )
+value = 2
+description = "Amount of brains the character has.
+
+Brains score serves as a description of how big-brained a character is.
+More brains, more range and damage with majik . Even more brains
+and they might even read books!"
+modifier = true
+
+[node name="Armor" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 42.0
+margin_top = 52.0
+margin_right = 74.0
+margin_bottom = 84.0
+icon = ExtResource( 4 )
+value = 2
+description = "Amount of armor the character has.
+
+Armor lowers the incomming damage from
+all non-magical sources."
+modifier = true
+
+[node name="Resistance" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 74.0
+margin_top = 52.0
+margin_right = 106.0
+margin_bottom = 84.0
+icon = ExtResource( 10 )
+tint = Color( 0.811765, 0.443137, 1, 1 )
+value = 1
+description = "Amount of magic resistance the character has.
+
+Resistance lowers the effectiveness of all
+spells targeting this character."
+modifier = true
+
+[node name="HP" parent="CardPreview/Requirements" instance=ExtResource( 16 )]
+margin_left = 106.0
+margin_top = 52.0
+margin_right = 138.0
+margin_bottom = 84.0
+icon = ExtResource( 18 )
+tint = Color( 1, 0, 0, 1 )
+value = 3
+description = "Amount of health the character has"
+modifier = true
+
+[node name="RarityAndType" type="NinePatchRect" parent="CardPreview"]
+margin_left = 6.0
+margin_top = 80.0
+margin_right = 186.0
+margin_bottom = 100.0
+texture = ExtResource( 26 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="CardPreview/RarityAndType"]
+margin_left = 23.0
+margin_top = 1.0
+margin_right = 179.0
+margin_bottom = 19.0
+texture = ExtResource( 25 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="CardPreview/RarityAndType"]
+margin_left = 28.0
+margin_top = 3.0
+margin_right = 175.0
+margin_bottom = 17.0
+text = "placeholder_card_type"
+
+[node name="Rarity" type="NinePatchRect" parent="CardPreview/RarityAndType"]
+margin_top = -2.0
+margin_right = 24.0
+margin_bottom = 22.0
+mouse_filter = 0
+texture = ExtResource( 26 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="NinePatchRect" parent="CardPreview/RarityAndType/Rarity"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 23.0
+margin_bottom = 23.0
+texture = ExtResource( 25 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="CardPreview/RarityAndType/Rarity"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+texture = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tooltip" parent="CardPreview/RarityAndType/Rarity" instance=ExtResource( 28 )]
+margin_left = 2.0
+margin_right = 18.0
+description = "Rarity"
+
+[node name="CardAffinity" type="Control" parent="CardPreview"]
+margin_left = 7.0
+margin_top = 43.0
+margin_right = 184.0
+margin_bottom = 75.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AffinityLife" parent="CardPreview/CardAffinity" instance=ExtResource( 12 )]
+modulate = Color( 1, 0.960784, 0.713726, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
+margin_left = 8.0
+margin_right = 40.0
+texture = ExtResource( 19 )
+tint = Color( 1, 0.960784, 0.713726, 1 )
+
+[node name="AffinityOrder" parent="CardPreview/CardAffinity" instance=ExtResource( 12 )]
+modulate = Color( 0.470588, 0.72549, 1, 1 )
+margin_left = 40.0
+margin_right = 72.0
+texture = ExtResource( 21 )
+tint = Color( 0.470588, 0.72549, 1, 1 )
+
+[node name="AffinityBalance" parent="CardPreview/CardAffinity" instance=ExtResource( 12 )]
+modulate = Color( 0.360784, 0.827451, 0.282353, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
+margin_left = 72.0
+margin_right = 104.0
+texture = ExtResource( 13 )
+tint = Color( 0.360784, 0.827451, 0.282353, 1 )
+
+[node name="AffinityChaos" parent="CardPreview/CardAffinity" instance=ExtResource( 12 )]
+modulate = Color( 0.85098, 0.180392, 0.180392, 1 )
+margin_left = 104.0
+margin_right = 136.0
+texture = ExtResource( 20 )
+tint = Color( 0.85098, 0.180392, 0.180392, 1 )
+
+[node name="AffinityDeath" parent="CardPreview/CardAffinity" instance=ExtResource( 12 )]
+modulate = Color( 0.721569, 0.694118, 0.756863, 1 )
+self_modulate = Color( 0.121569, 0.121569, 0.121569, 0.498039 )
+margin_left = 136.0
+margin_right = 168.0
+texture = ExtResource( 22 )
+tint = Color( 0.721569, 0.694118, 0.756863, 1 )
+
+[node name="IconContainer" type="NinePatchRect" parent="CardPreview"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="CardPreview/IconContainer"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 33.0
+margin_bottom = 33.0
+texture = ExtResource( 24 )

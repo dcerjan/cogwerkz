@@ -22,7 +22,6 @@ tracks/0/keys = {
 }
 
 [node name="DetailCardSlot" type="NinePatchRect"]
-modulate = Color( 1.27059, 1.27059, 1.27059, 1 )
 self_modulate = Color( 1.27059, 1.27059, 1.27059, 1 )
 margin_right = 192.0
 margin_bottom = 36.0
