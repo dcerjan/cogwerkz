@@ -44,7 +44,9 @@ func _ready() -> void:
 	refresh()
 
 func _on_mouse_entered() -> void:
+	if modifier: return
 	$Icon/AnimationPlayer.play('Highlight')
 
 func _on_mouse_exited() -> void:
+	if modifier: return
 	$Icon/AnimationPlayer.play_backwards('Highlight')

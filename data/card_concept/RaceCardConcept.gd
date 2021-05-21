@@ -2,8 +2,6 @@ tool
 extends CardConcept
 class_name RaceCardConcept
 
-export(int, FLAGS, 'Life', 'Order', 'Balance', 'Chaos', 'Death') var affinity = 0b0001111 setget _set_affinity
-
 export(
 	Array, int, FLAGS, 'Weapon', 'Armor', 'Shield', 'Helmet', 'Greaves', 'Cape', 'Consumable', 'Trinket', 'Gauntlets'
 ) var equipment_tokens = [] setget _set_equipment_tokens
@@ -17,10 +15,6 @@ export(int) var resistance = 0 setget _set_resistance
 export(int) var agility = 0 setget _set_agility
 export(int) var brawn = 0 setget _set_brawn
 export(int) var brains = 0 setget _set_brains
-
-func _set_affinity(new_affinity):
-	affinity = new_affinity
-	emit_changed()
 
 func _set_equipment_tokens(new_equipment_tokens):
 	equipment_tokens = new_equipment_tokens

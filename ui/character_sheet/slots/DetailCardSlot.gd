@@ -21,6 +21,7 @@ func _refresh() -> void:
 		if has_node('Rarity'): $Rarity.modulate = Color(0x00000000)
 		if has_node('Background'): $Background.texture = null
 		if has_node('Placeholder'): $Placeholder.text = placeholder
+		if has_node('IconContainer'): $IconContainer.visible = false
 	else:
 		self.texture = BLACK_BACKGROUND
 		if has_node('CardName'): $CardName.text = card.name
@@ -34,3 +35,6 @@ func _refresh() -> void:
 			$Rarity.modulate = color
 		if has_node('Background'): $Background.texture = AFFINITY_NONE_BACKGROUND
 		if has_node('Placeholder'): $Placeholder.text = ''
+		if has_node('IconContainer'):
+			$IconContainer.visible = true
+			$IconContainer/Icon.texture = card.icon

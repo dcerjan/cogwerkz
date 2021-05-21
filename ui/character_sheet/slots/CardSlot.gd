@@ -57,9 +57,11 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	$AnimationPlayer.play('Highlight')
+	if context != null: context.notify_hovered_card(card)
 
 func _on_mouse_exited() -> void:
 	$AnimationPlayer.play_backwards('Highlight')
+	if context != null: context.notify_hovered_card(null)
 
 func get_drag_data(position: Vector2):
 	if context == null || card == null:

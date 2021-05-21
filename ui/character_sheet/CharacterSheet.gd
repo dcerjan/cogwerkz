@@ -6,6 +6,8 @@ export(Resource) var character_sheet = null setget _set_character_sheet
 var current_dragged_data: CardSlot.CardDropData = null
 var prev_affinity = 0
 
+signal hovered_card(card)
+
 func _on_race_card_grabbed(card: RaceCardConcept, slot) -> void:
 	var sheet: CharacterConcept = character_sheet
 	if sheet != null && slot == $RaceSlot:
@@ -26,6 +28,9 @@ func _on_class_card_dropped(card: ClassCardConcept, slot) -> void:
 	if sheet != null && slot == $ClassSlot:
 		sheet.class_card = card
 
+func notify_hovered_card(card: CardConcept) -> void:
+	emit_signal('hovered_card', card)
+
 func subscribe() -> void:
 	$RaceSlot.connect('drag_start', self, '_on_race_card_grabbed')
 	$RaceSlot.connect('drag_end', self, '_on_race_card_dropped')
@@ -36,6 +41,7 @@ func _ready() -> void:
 	$RaceSlot.context = self
 	$ClassSlot.context = self
 	$CardPool.context = self
+	$CardPreview.context = self
 	subscribe()
 	_on_character_sheet_changed()
 
