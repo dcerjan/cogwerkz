@@ -9,4 +9,5 @@ name = "Fresh Mountain Air"
 rarity = 4
 icon = ExtResource( 2 )
 affinity = 31
+type = 4
 cost = [  ]

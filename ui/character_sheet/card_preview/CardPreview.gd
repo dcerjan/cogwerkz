@@ -27,11 +27,13 @@ func _ready() -> void:
 func set_preview(card: CardConcept) -> void:
 	$CardNameContainer/Label.text = card.name
 	$IconContainer/Icon.texture = card.icon
+	$RarityAndType/Label.text = CommonConcept.Formatter.format_card_type(card.type)
 	update_affinity(card.affinity)
 
 func unset_preview() -> void:
 	$CardNameContainer/Label.text = ''
 	$IconContainer/Icon.texture = CARD_ICON_NONE
+	$RarityAndType/Label.text = ''
 	update_affinity(0)
 
 func update_affinity(card_affinity: int):

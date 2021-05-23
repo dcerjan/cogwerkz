@@ -9,4 +9,5 @@ name = "Silver Sword"
 rarity = 8
 icon = ExtResource( 2 )
 affinity = 1
+type = 4
 cost = [  ]

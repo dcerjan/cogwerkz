@@ -9,6 +9,7 @@ name = "Test Class"
 rarity = 2
 icon = ExtResource( 2 )
 affinity = 10
+type = 2
 remove_equipment_tokens = [  ]
 add_equipment_tokens = [  ]
 abilities = 0

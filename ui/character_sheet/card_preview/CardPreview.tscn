@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://ui/character_sheet/card_preview/CardPreview.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/mini_icons_resistance.png" type="Texture" id=3]
@@ -11,8 +11,6 @@
 [ext_resource path="res://ui/character_sheet/Attribute.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ui/common/AffinityIcon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/sprites/mini_icons_brawn.png" type="Texture" id=13]
-[ext_resource path="res://ui/common/Tooltip.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/sprites/ninepatch_tooltip_border.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/mini_icons_armor.png" type="Texture" id=16]
 [ext_resource path="res://assets/sprites/mini_icons_health.png" type="Texture" id=17]
 [ext_resource path="res://assets/sprites/affinity_balance.png" type="Texture" id=18]
@@ -22,20 +20,6 @@
 [ext_resource path="res://assets/sprites/affinity_order.png" type="Texture" id=22]
 [ext_resource path="res://assets/sprites/affinity_death.png" type="Texture" id=23]
 [ext_resource path="res://assets/sprites/nine_patch_black.png" type="Texture" id=24]
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 32, 32 )
-margin_left = 8.0
-margin_right = 8.0
-margin_top = 8.0
-margin_bottom = 8.0
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 
 [node name="CardPreview" type="NinePatchRect"]
 margin_left = 224.0
@@ -291,12 +275,6 @@ texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tooltip" parent="RarityAndType/Rarity" instance=ExtResource( 14 )]
-margin_left = 2.0
-margin_right = 18.0
-custom_styles/panel = SubResource( 2 )
-description = "Rarity"
 
 [node name="Affinity" type="Control" parent="."]
 margin_left = 7.0

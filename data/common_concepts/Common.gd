@@ -37,6 +37,15 @@ enum SlotType {
 	Backpack   = -1,
 }
 
+enum CardType {
+	Race       = 0b0000000000000001,
+	Class      = 0b0000000000000010,
+	Equipment  = 0b0000000000000100,
+	Skill      = 0b0000000000001000,
+	Ability    = 0b0000000000010000,
+	Spell      = 0b0000000000100000,
+}
+
 enum EquipmentToken {
 	None        = 0b0000000000000000,
 	Weapon      = 0b0000000000000001,
@@ -94,5 +103,14 @@ class Formatter:
 					Affinity.Balance: affinities.push_back('Balance')
 					Affinity.Chaos: affinities.push_back('Chaos')
 					Affinity.Death: affinities.push_back('Death')
-
 		return PoolStringArray(affinities).join(' - ')
+
+	static func format_card_type(card_type: int) -> String:
+		match card_type:
+			CardType.Race: return 'Race Card'
+			CardType.Class: return 'Class Card'
+			CardType.Equipment: return 'Equipment Card'
+			CardType.Skill: return 'SKill Card'
+			CardType.Ability: return 'Ability Card'
+			CardType.Spell: return 'Spell Card'
+		return ''
