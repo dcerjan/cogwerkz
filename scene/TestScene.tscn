@@ -6,7 +6,7 @@
 [node name="TestScene" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3.04553, 3.10117 )
+transform = Transform( 0.674305, -0.485971, 0.556008, 0, 0.752936, 0.658094, -0.738453, -0.443756, 0.507709, 5, 5, 5 )
 current = true
 
 [node name="UI" type="Control" parent="."]

@@ -15,6 +15,8 @@ const MAP = [
 	[   1,    1,    1,    1, null, null, null],
 ]
 
+var last_tile_entered = null
+
 func _set_cell_size(new_cell_size: float) -> void:
 	cell_size = new_cell_size
 	update_tiles()
@@ -40,3 +42,22 @@ func update_tiles() -> void:
 			q += 1
 		r += 1
 		q = - round(MAP[0].size() / 2)
+
+func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
+
+	var mouse_pos = get_viewport().get_mouse_position()
+	var camera = get_viewport().get_camera()
+
+	var ray_from = camera.project_ray_origin(mouse_pos)
+	var ray_to = ray_from + camera.project_ray_normal(mouse_pos) * 100.0
+
+	var space_state = get_world().direct_space_state
+	var result = space_state.intersect_ray(ray_from, ray_to)
+
+	if result.has('collider') && result.collider is HexTile:
+		if last_tile_entered != result.collider:
+			if last_tile_entered != null:
+				last_tile_entered.on_mouse_exited()
+			last_tile_entered = result.collider
+			last_tile_entered.on_mouse_entered()

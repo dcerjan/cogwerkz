@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hex/Hex.gd"
 }, {
+"base": "StaticBody",
+"class": "HexTile",
+"language": "GDScript",
+"path": "res://scene/HexTile.gd"
+}, {
 "base": "CardConcept",
 "class": "ItemCardConcept",
 "language": "GDScript",
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "CommonConcept": "",
 "DetailCardSlot": "",
 "Hex": "",
+"HexTile": "",
 "ItemCardConcept": "",
 "ItemCardDb": "",
 "PlayerConcept": "",
