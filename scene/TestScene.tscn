@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/character_sheet/CharacterSheet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/HexMap.gd" type="Script" id=2]
+[ext_resource path="res://scene/Character.gd" type="Script" id=3]
+[ext_resource path="res://scene/CharacterManager.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.25
+mid_height = 0.5
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0.623529, 1, 1 )
 
 [node name="TestScene" type="Spatial"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.674305, -0.485971, 0.556008, 0, 0.752936, 0.658094, -0.738453, -0.443756, 0.507709, 5, 5, 5 )
+transform = Transform( -2.50718e-08, -0.819152, 0.573576, -3.58063e-08, 0.573576, 0.819152, -1, 0, -4.37114e-08, 10, 10, 0 )
 current = true
 
 [node name="UI" type="Control" parent="."]
@@ -23,3 +32,20 @@ anchor_bottom = 9.0
 
 [node name="HexMap" type="Spatial" parent="."]
 script = ExtResource( 2 )
+map_radius = 4
+
+[node name="Character" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.202, 0, -2.68159 )
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Character"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CharacterManager" type="Spatial" parent="."]
+script = ExtResource( 4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.5, 0.224144, -0.836516, 0, 0.965926, 0.258819, 0.866025, -0.12941, 0.482963, 0, 3.4, 0 )
+light_energy = 0.5

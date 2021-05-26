@@ -8,6 +8,9 @@ class HexCube:
 		self.y = y
 		self.z = z
 
+	func distance_to(target: HexCube) -> int:
+		return int(max(max(abs(self.x - target.x), abs(self.y - target.y)), abs(self.z - target.z)))
+
 class HexVector:
 	extends Object
 
@@ -22,6 +25,9 @@ class HexVector:
 		var px = 3.0 / 2.0 * q
 		var py = (sqrt(3.0) / 2.0 * q + sqrt(3.0) * r)
 		return Vector2(px, py)
+
+	func distancce_to(target: HexVector) -> int:
+		return int((abs(self.q - target.q) + abs(self.q + self.r - target.q - target.r) + abs(self.r - target.r)) / 2)
 
 static func from_pixel(position: Vector2) -> HexVector:
 	var q = ( 2.0 / 3.0 * position.x)
